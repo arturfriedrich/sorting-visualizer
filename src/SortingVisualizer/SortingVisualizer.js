@@ -1,6 +1,11 @@
 import React from "react";
 import "./SortingVisualizer.css";
-import { mergeSort } from "../sortingAlgorithms/sortingAlgorithms.js";
+import { getMergeSortAnimations } from "../sortingAlgorithms/sortingAlgorithms.js";
+
+const ANIMATION_SPEED_MS = 1;
+const NUMBER_OF_ARRAY_BARS = 310;
+const PRIMARY_COLOR = 'turquoise';
+const SECONDARY_COLOR = 'red';
 
 export default class SortingVisualizer extends React.Component {
     constructor(props) {
@@ -16,11 +21,28 @@ export default class SortingVisualizer extends React.Component {
     }
 
     mergeSort() {
-        const javaScriptSortedArray = this.state.array.slice().sort((a, b) => a - b);
-        const sortedArray = mergeSort(this.state.array);
-
-        console.log(arraysAreEqual(javaScriptSortedArray, sortedArray));
-    }
+        const animations = getMergeSortAnimations(this.state.array);
+        for (let i = 0; i < animations.length; i++) {
+          const arrayBars = document.getElementsByClassName('array-bar');
+          const isColorChange = i % 3 !== 2;
+          if (isColorChange) {
+            const [barOneIdx, barTwoIdx] = animations[i];
+            const barOneStyle = arrayBars[barOneIdx].style;
+            const barTwoStyle = arrayBars[barTwoIdx].style;
+            const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
+            setTimeout(() => {
+              barOneStyle.backgroundColor = color;
+              barTwoStyle.backgroundColor = color;
+            }, i * ANIMATION_SPEED_MS);
+          } else {
+            setTimeout(() => {
+              const [barOneIdx, newHeight] = animations[i];
+              const barOneStyle = arrayBars[barOneIdx].style;
+              barOneStyle.height = `${newHeight}px`;
+            }, i * ANIMATION_SPEED_MS);
+          }
+        }
+      }
 
     resetArray() {
         const array = [];
@@ -38,9 +60,9 @@ export default class SortingVisualizer extends React.Component {
                 array.push(randomIntFromInterval(-1000, 1000));
             }
             const javaScriptSortedArray = array.slice().sort((a, b) => a - b);
-            const mergeSortedArray = mergeSort(array.slice());
+            const mergeSortedArray = getMergeSortAnimations.mergeSort(array.slice());
 
-            console.log("Merge sort test: ", arraysAreEqual(javaScriptSortedArray, mergeSortedArray));
+            console.log("Merge sort test: ",arraysAreEqual(javaScriptSortedArray, mergeSortedArray));
         }
     }
 
