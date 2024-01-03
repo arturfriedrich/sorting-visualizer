@@ -4,7 +4,7 @@ import './SortingComponent.css';
 import { changeDelay, delay, PRIMARY_COLOR, randomNumberFrom } from "../../Utilities/utils";
 
 // algos
-// import { bubbleSort } from '../Algorithm/bubbleSort';
+import { bubbleSort } from '../../algorithms/bubbleSort';
 // import { selectionSort } from '../Algorithm/selectionSort';
 // import { insertionSort } from '../Algorithm/insertionSort';
 // import { quickSort } from '../Algorithm/quickSort';
@@ -90,7 +90,7 @@ function SortingComponent() {
                 <div><button className='btn' onClick={resetArr}>Generate array</button></div>
                 <div><button className='btn' id='msort' onClick={mergeSort}>mergeSort Sort</button></div>
                 {/*<div><button className='btn' id='qsort' onClick={quickSort}>Quick Sort</button></div>*/}
-                {/*<div><button className='btn' id='bsort' onClick={bubbleSort}>Bubble Sort</button></div>*/}
+                <div><button className='btn' id='bsort' onClick={bubbleSort}>Bubble Sort</button></div>
                 {/*<div><button className='btn' id='ssort' onClick={selectionSort}>Selection Sort</button></div>*/}
                 {/*<div><button className='btn' id='isort' onClick={insertionSort}>Insertion Sort</button></div>*/}
                 <div>
