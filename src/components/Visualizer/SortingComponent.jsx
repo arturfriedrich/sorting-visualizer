@@ -1,27 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './SortingComponent.css';
 
-import { changeDelay, delay, PRIMARY_COLOR, randomNumberFrom } from "../../Utilities/utils";
+import { PRIMARY_COLOR, randomNumberFrom } from "../../Utilities/utils";
 
-// algos
 import { bubbleSort } from '../../algorithms/bubbleSort';
-// import { selectionSort } from '../Algorithm/selectionSort';
-// import { insertionSort } from '../Algorithm/insertionSort';
-// import { quickSort } from '../Algorithm/quickSort';
 import { mergeSort } from "../../algorithms/mergeSort";
 
 function SortingComponent() {
-    var [arr, setArr] = useState([]);
-    var [arrSize, setArrSize] = useState(50);
-    var [wid, setWid] = useState(9);
+    const [arr, setArr] = useState([]);
+    const [arrSize, setArrSize] = useState(50);
+    const [wid, setWid] = useState(9);
 
     function resetArr() {
-        var arr = []
-        for (var i = 0; i < arrSize; i++) {
+        let i;
+        const arr = [];
+        for (i = 0; i < arrSize; i++) {
             arr.push(randomNumberFrom(8, 650));
         }
         setArr(arr);
-        var elem = document.querySelectorAll('.element-bar');
+        const elem = document.querySelectorAll('.element-bar');
         for (i = 0; i < elem.length; i++) {
             elem[i].style.background = PRIMARY_COLOR
         }
@@ -72,35 +69,6 @@ function SortingComponent() {
 
     return (
         <div>
-            <div className='sideNavbar'>
-                <h3>Sorting Visualiser</h3>
-                <label className='sliderLabel'>
-                    Array Size
-                    <br />
-                    <input id='rangeSlider' type='range' min='5' max='200' value={arrSize} onChange={(e) => setArrSizeHelper(e.target.value)} />
-                </label>
-                <br />
-                {/*<label className='sliderLabel'>*/}
-                {/*    Delay*/}
-                {/*    <br />*/}
-                {/*    <input type='range' min='5' max='200' onChange={(e) => { changeDelay(e.target.value) }} />*/}
-                {/*</label>*/}
-                <br />
-                <br />
-                <div><button className='btn' onClick={resetArr}>Generate array</button></div>
-                <div><button className='btn' id='msort' onClick={mergeSort}>mergeSort Sort</button></div>
-                {/*<div><button className='btn' id='qsort' onClick={quickSort}>Quick Sort</button></div>*/}
-                <div><button className='btn' id='bsort' onClick={bubbleSort}>Bubble Sort</button></div>
-                {/*<div><button className='btn' id='ssort' onClick={selectionSort}>Selection Sort</button></div>*/}
-                {/*<div><button className='btn' id='isort' onClick={insertionSort}>Insertion Sort</button></div>*/}
-                <div>
-                    <br />
-                    <a href="https://github.com/jindal2209/Sorting_Visualizer/fork" target='_blank' rel='noreferrer' >
-                        <img style={{ width: '90px' }} src={process.env.PUBLIC_URL + "/iff.png"} alt='myGithub' />
-                    </a>
-                </div>
-            </div>
-
             <div className='array'>
 
                 {arr.map((val, idx) => (
@@ -111,15 +79,22 @@ function SortingComponent() {
                             height: `${val}px`,
                             width: `${wid}px`,
                             backgroundColor: PRIMARY_COLOR,
-                            // WebkitTransition: `background-color ${delay}ms linear`,
-                            // msTransition: `background-color ${delay}ms linear`,
-                            // transition: `background-color ${delay}ms linear`,
-                            // transition: `${delay}ms`
                         }} >
                     </div>
                 ))}
 
             </div>
+
+            <label className='sliderLabel'>
+                Array Size
+                <br />
+                <input id='rangeSlider' type='range' min='5' max='200' value={arrSize} onChange={(e) => setArrSizeHelper(e.target.value)} />
+            </label>
+
+            <button onClick={resetArr}>Generate array</button>
+            <button onClick={mergeSort}>mergeSort Sort</button>
+            <button onClick={bubbleSort}>Bubble Sort</button>
+
         </div>
     )
 }

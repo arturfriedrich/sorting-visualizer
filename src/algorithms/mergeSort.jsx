@@ -1,6 +1,6 @@
 import { COMPARE_COLOR, delay, disableAllButtons, FINAL_COLOR, MakeDelay, POSITION_FINAL_COLOR, PRIMARY_COLOR, Swap, SWAP_COLOR } from "../Utilities/utils"
 
-var n;
+let n;
 
 function gap(g) {
     if (g <= 1) {
@@ -10,9 +10,10 @@ function gap(g) {
 }
 
 async function inPlaceMerge(arr, s, e) {
-    var g = gap(e - s + 1);
+    let i;
+    let g = gap(e - s + 1);
 
-    for (var i = s; i <= e; i++) {
+    for (i = s; i <= e; i++) {
         await MakeDelay(20);
         arr[i].style.background = COMPARE_COLOR;
     }
@@ -20,7 +21,7 @@ async function inPlaceMerge(arr, s, e) {
 
     for (g; g > 0; g = gap(g)) {
         for (i = s; i + g <= e; i++) {
-            var j = i + g;
+            const j = i + g;
             arr[i].style.background = COMPARE_COLOR;
             arr[j].style.background = COMPARE_COLOR;
             await MakeDelay(delay);
@@ -41,15 +42,13 @@ async function inPlaceMerge(arr, s, e) {
             }
         }
     }
-    // await MakeDelay(delay);
-    // arr[i].style.background = POSITION_FINAL_COLOR;
 }
 
 async function mergeSortHelper(arr, s, e) {
     if (s >= e) {
         return;
     }
-    var mid = s + parseInt((e - s) / 2);
+    const mid = s + parseInt((e - s) / 2);
     await mergeSortHelper(arr, s, mid);
     await mergeSortHelper(arr, mid + 1, e);
     await inPlaceMerge(arr, s, e);
@@ -58,15 +57,13 @@ async function mergeSortHelper(arr, s, e) {
 
 export async function mergeSort() {
     disableAllButtons(true);
-    document.getElementById("msort").className = 'btndisabled';
 
-    var arr = document.querySelectorAll('.element-bar');
+    const arr = document.querySelectorAll('.element-bar');
     n = arr.length;
     await mergeSortHelper(arr, 0, n - 1);
-    for (var i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
         await MakeDelay(delay)
         arr[i].style.background = FINAL_COLOR;
     }
-    document.getElementById("msort").className = 'btn';
     disableAllButtons(false);
 }

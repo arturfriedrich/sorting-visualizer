@@ -2,12 +2,12 @@ import { delay, FINAL_COLOR, MakeDelay, POSITION_FINAL_COLOR, PRIMARY_COLOR, COM
 
 
 export async function bubbleSort() {
+    let i;
     disableAllButtons(true);
-    var arr = document.querySelectorAll('.element-bar');
-    document.getElementById("bsort").className = 'btndisabled';
-    var n = arr.length
+    const arr = document.querySelectorAll('.element-bar');
+    const n = arr.length;
 
-    for (var i = 0; i < n; i++) {
+    for (i = 0; i < n; i++) {
         for (let j = 0; j < n - i - 1; j++) {
 
             arr[j].style.background = COMPARE_COLOR;
@@ -32,6 +32,5 @@ export async function bubbleSort() {
         await MakeDelay(delay)
         arr[i].style.background = FINAL_COLOR;
     }
-    document.getElementById("bsort").className = 'btn';
     disableAllButtons(false);
 }
