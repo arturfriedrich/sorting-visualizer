@@ -7,6 +7,7 @@ import { bubbleSort } from '../../algorithms/bubbleSort';
 import { mergeSort } from "../../algorithms/mergeSort";
 import { quickSort } from "../../algorithms/quickSort";
 import { insertionSort } from "../../algorithms/insertionSort";
+import {selectionSort} from "../../algorithms/selectionSort";
 
 function SortingComponent() {
     const [arr, setArr] = useState([]);
@@ -78,10 +79,11 @@ function SortingComponent() {
             </label>
 
             <button onClick={resetArr}>Generate array</button>
-            <button onClick={mergeSort}>mergeSort Sort</button>
+            <button onClick={mergeSort}>Merge Sort</button>
             <button onClick={bubbleSort}>Bubble Sort</button>
             <button onClick={quickSort}>Quick Sort</button>
             <button onClick={insertionSort}>Insertion Sort</button>
+            <button onClick={selectionSort}>Selection Sort</button>
 
         </div>
     )
