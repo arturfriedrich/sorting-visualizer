@@ -4,6 +4,6 @@ const initialState = [];
 
 export const setAlgorithm = createAction('SET_ALGORITHM');
 
-export default handleActions({
+export default algorithm = handleActions({
     [setAlgorithm]: (state, action) => action.payload,
 }, initialState);
