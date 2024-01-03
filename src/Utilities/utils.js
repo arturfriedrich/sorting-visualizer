@@ -4,9 +4,9 @@ export function Swap(x, y) {
     y.style.height = x = temp;
 }
 
-export function MakeDelay(milisec) {
+export function MakeDelay(ms) {
     return new Promise(resolve => {
-        setTimeout(() => { resolve('') }, milisec);
+        setTimeout(() => { resolve('') }, ms);
     })
 }
 
@@ -24,14 +24,8 @@ export function randomNumberFrom(l, r) {
 
 export function disableAllButtons(val) {
     document.getElementById('rangeSlider').disabled = val;
-    var btns = document.querySelectorAll(".btn")
-    for (var i = 0; i < btns.length; i++) {
-        btns[i].disabled = val;
+    const buttons = document.querySelectorAll(".btn");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = val;
     }
 }
-
-export function changeDelay(val) {
-    delay = val;
-}
-
-// delay kro color change kro phir swap kro swap krne pe agar bars ke color alag alag hai to color swap nhii hote
