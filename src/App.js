@@ -1,12 +1,12 @@
 import React from "react";
-import Body from "./components/Body/BodyContainer.js";
+import SortingComponent from "./components/Visualizer/SortingComponent";
 
-const Main = () => {
+const App = () => {
   return (
     <div>
-      <Body />
+      <SortingComponent />
     </div>
   );
 };
 
-export default Main;
+export default App;
