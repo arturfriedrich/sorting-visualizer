@@ -1,11 +1,12 @@
-import Body from './components/Body/Body.jsx';
+import React from "react";
+import Body from "./components/Body/BodyContainer.js";
 
-function App() {
+const Main = () => {
   return (
-    <div className="App">
+    <div>
       <Body />
     </div>
   );
-}
+};
 
-export default App;
+export default Main;
