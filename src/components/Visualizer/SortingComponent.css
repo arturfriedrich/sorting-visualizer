@@ -13,6 +13,12 @@
     margin: 0 auto;
 }
 
+.functions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -25,7 +31,23 @@
     overflow-y: auto;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    justify-content: space-between;
+}
+
+.sidebar h1 {
+    margin: 2rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: cadetblue;
+    font-weight: 600;
+}
+
+.sidebar > * {
+    margin: 0;
 }
 
 input[type="range"] {

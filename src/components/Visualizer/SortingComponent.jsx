@@ -7,8 +7,8 @@ import { bubbleSort } from '../../algorithms/bubbleSort';
 import { mergeSort } from "../../algorithms/mergeSort";
 import { quickSort } from "../../algorithms/quickSort";
 import { insertionSort } from "../../algorithms/insertionSort";
-import {selectionSort} from "../../algorithms/selectionSort";
-import {heapSort} from "../../algorithms/heapSort";
+import { selectionSort } from "../../algorithms/selectionSort";
+import { heapSort } from "../../algorithms/heapSort";
 
 function SortingComponent() {
     const [arr, setArr] = useState([]);
@@ -58,19 +58,26 @@ function SortingComponent() {
     return (
         <div>
             <div className='sidebar'>
-                <label className='sliderLabel'>
-                    Array Size
-                    <br />
-                    <input id='rangeSlider' type='range' min='5' max='200' value={arrSize} onChange={(e) => setArrSizeHelper(e.target.value)} />
-                </label>
+                <div className='functions'>
+                    <h1>Sorting Visualizer</h1>
 
-                <button onClick={resetArr}>Generate array</button>
-                <button onClick={mergeSort}>Merge Sort</button>
-                <button onClick={bubbleSort}>Bubble Sort</button>
-                <button onClick={quickSort}>Quick Sort</button>
-                <button onClick={insertionSort}>Insertion Sort</button>
-                <button onClick={selectionSort}>Selection Sort</button>
-                <button onClick={heapSort}>Heap Sort</button>
+                    <label className='sliderLabel'>
+                        Array Size
+                        <br />
+                        <input id='rangeSlider' type='range' min='5' max='200' value={arrSize} onChange={(e) => setArrSizeHelper(e.target.value)} />
+                    </label>
+
+                    <button onClick={resetArr}>Generate array</button>
+                    <button onClick={mergeSort}>Merge Sort</button>
+                    <button onClick={bubbleSort}>Bubble Sort</button>
+                    <button onClick={quickSort}>Quick Sort</button>
+                    <button onClick={insertionSort}>Insertion Sort</button>
+                    <button onClick={selectionSort}>Selection Sort</button>
+                    <button onClick={heapSort}>Heap Sort</button>
+                </div>
+
+                <p>Created by <a href="https://github.com/arturfriedrich" target="_blank">Artur Friedrich</a> </p>
+
             </div>
 
             <div className='array'>
