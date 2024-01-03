@@ -31,37 +31,21 @@ function SortingComponent() {
 
 
     function setArrSizeHelper(val) {
-        console.log(val);
-        if (val > 100) {
-            setWid(2)
-        }
-        else if (val > 80) {
-            setWid(5);
-        }
-        else if (val > 70) {
-            setWid(7);
-        }
-        else if (val > 60) {
-            setWid(10);
-        }
-        else if (val > 50) {
-            setWid(15);
-        }
-        else if (val > 40) {
-            setWid(19);
-        }
-        else if (val > 30) {
-            setWid(25);
-        }
-        else if (val > 20) {
-            setWid(33);
-        }
-        else if (val > 10) {
-            setWid(40);
-        }
-        else {
-            setWid(60);
-        }
+        const widthLookup = [
+            { limit: 100, width: 2 },
+            { limit: 80, width: 5 },
+            { limit: 70, width: 7 },
+            { limit: 60, width: 10 },
+            { limit: 50, width: 15 },
+            { limit: 40, width: 19 },
+            { limit: 30, width: 25 },
+            { limit: 20, width: 33 },
+            { limit: 10, width: 40 },
+            { limit: 0, width: 60 },
+        ];
+
+        const width = widthLookup.find(item => val > item.limit).width;
+        setWid(width);
 
         setArrSize(val);
         resetArr();
