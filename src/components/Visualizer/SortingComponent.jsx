@@ -56,6 +56,21 @@ function SortingComponent() {
 
     return (
         <div>
+            <div className='sidebar'>
+                <label className='sliderLabel'>
+                    Array Size
+                    <br />
+                    <input id='rangeSlider' type='range' min='5' max='200' value={arrSize} onChange={(e) => setArrSizeHelper(e.target.value)} />
+                </label>
+
+                <button onClick={resetArr}>Generate array</button>
+                <button onClick={mergeSort}>Merge Sort</button>
+                <button onClick={bubbleSort}>Bubble Sort</button>
+                <button onClick={quickSort}>Quick Sort</button>
+                <button onClick={insertionSort}>Insertion Sort</button>
+                <button onClick={selectionSort}>Selection Sort</button>
+            </div>
+
             <div className='array'>
 
                 {arr.map((val, idx) => (
@@ -69,22 +84,7 @@ function SortingComponent() {
                         }} >
                     </div>
                 ))}
-
             </div>
-
-            <label className='sliderLabel'>
-                Array Size
-                <br />
-                <input id='rangeSlider' type='range' min='5' max='200' value={arrSize} onChange={(e) => setArrSizeHelper(e.target.value)} />
-            </label>
-
-            <button onClick={resetArr}>Generate array</button>
-            <button onClick={mergeSort}>Merge Sort</button>
-            <button onClick={bubbleSort}>Bubble Sort</button>
-            <button onClick={quickSort}>Quick Sort</button>
-            <button onClick={insertionSort}>Insertion Sort</button>
-            <button onClick={selectionSort}>Selection Sort</button>
-
         </div>
     )
 }
