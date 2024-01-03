@@ -6,6 +6,7 @@ import { PRIMARY_COLOR, randomNumberFrom } from "../../Utilities/utils";
 import { bubbleSort } from '../../algorithms/bubbleSort';
 import { mergeSort } from "../../algorithms/mergeSort";
 import { quickSort } from "../../algorithms/quickSort";
+import { insertionSort } from "../../algorithms/insertionSort";
 
 function SortingComponent() {
     const [arr, setArr] = useState([]);
@@ -80,6 +81,7 @@ function SortingComponent() {
             <button onClick={mergeSort}>mergeSort Sort</button>
             <button onClick={bubbleSort}>Bubble Sort</button>
             <button onClick={quickSort}>Quick Sort</button>
+            <button onClick={insertionSort}>Insertion Sort</button>
 
         </div>
     )
