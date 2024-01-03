@@ -4,6 +4,6 @@ const initialState = [];
 
 export const setArray = createAction('SET_ARRAY');
 
-export default array = handleActions({
+export const array = handleActions({
     [setArray]: (state, action) => action.payload,
 }, initialState);

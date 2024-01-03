@@ -4,6 +4,6 @@ const initialState = false;
 
 export const setRunning = createAction('SET_RUNNING');
 
-export default isRunning = handleActions({
+export const isRunning = handleActions({
     [setRunning]: (state, action) => action.payload,
 }, initialState);

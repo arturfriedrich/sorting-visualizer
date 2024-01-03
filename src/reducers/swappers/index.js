@@ -4,7 +4,7 @@ const initialState = [];
 
 export const setSwappers = createAction('SET_SWAPPERS');
 
-export default currentSwappers = handleActions({
+export const currentSwappers = handleActions({
     [setSwappers]: (state, action) => {
         if (action.payload.length === 0) {
             return [];

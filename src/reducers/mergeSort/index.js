@@ -4,6 +4,6 @@ const initialState = [];
 
 export const setCurrentMergeX = createAction('SET_CURRENT_MERGEX');
 
-export default currentMergeX = handleActions({
+export const currentMergeX = handleActions({
     [setCurrentMergeX]: (state, action) => action.payload,
 }, initialState);

@@ -4,7 +4,7 @@ const initialState = [];
 
 export const setSorted = createAction('SET_SORTED');
 
-export default currentSorted = handleActions({
+export const currentSorted = handleActions({
     [setSorted]: (state, action) => {
         if (action.payload.length === 0) {
             return [];
