@@ -16,6 +16,7 @@ export const FINAL_COLOR = 'rgb(15, 245, 70)';
 export const POSITION_FINAL_COLOR = 'rgb(183, 51, 245)';
 export const COMPARE_COLOR = 'blue';
 export const SWAP_COLOR = 'red';
+export const MIN_COLOR = 'rgb(255, 112, 31)'
 
 export function randomNumberFrom(l, r) {
     return Math.floor(Math.random() * (l - r + 1) + r)
