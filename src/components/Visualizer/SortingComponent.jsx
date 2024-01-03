@@ -8,6 +8,7 @@ import { mergeSort } from "../../algorithms/mergeSort";
 import { quickSort } from "../../algorithms/quickSort";
 import { insertionSort } from "../../algorithms/insertionSort";
 import {selectionSort} from "../../algorithms/selectionSort";
+import {heapSort} from "../../algorithms/heapSort";
 
 function SortingComponent() {
     const [arr, setArr] = useState([]);
@@ -69,6 +70,7 @@ function SortingComponent() {
                 <button onClick={quickSort}>Quick Sort</button>
                 <button onClick={insertionSort}>Insertion Sort</button>
                 <button onClick={selectionSort}>Selection Sort</button>
+                <button onClick={heapSort}>Heap Sort</button>
             </div>
 
             <div className='array'>
