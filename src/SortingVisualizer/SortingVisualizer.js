@@ -46,29 +46,35 @@ export default class SortingVisualizer extends React.Component {
     }
 
     quickSort() {
-    const animations = getQuickSortAnimations(this.state.array);
-    for (let i = 0; i < animations.length; i++) {
-        const arrayBars = document.getElementsByClassName('array-bar');
-        const isColorChange = i % 3 !== 2;
-        if (isColorChange) {
-            const [barOneIdx, barTwoIdx] = animations[i];
-            console.log(barOneIdx, barTwoIdx)
-            const barOneStyle = arrayBars[barOneIdx].style;
-            const barTwoStyle = arrayBars[barTwoIdx].style;
-            const color = i % 3 === 0 ? SECONDARY_COLOR : PRIMARY_COLOR;
-            setTimeout(() => {
-                barOneStyle.backgroundColor = color;
-                barTwoStyle.backgroundColor = color;
-            }, i * ANIMATION_SPEED_MS);
-        } else {
-            setTimeout(() => {
-                const [barOneIdx, newHeight] = animations[i];
+        const animations = getQuickSortAnimations(this.state.array.slice()); // Copy the array to avoid modifying the actual values
+        for (let i = 0; i < animations.length; i++) {
+            const arrayBars = document.getElementsByClassName('array-bar');
+            const isColorChange = i % 3 !== 2;
+            if (isColorChange) {
+                const [barOneIdx, barTwoIdx, action] = animations[i];
                 const barOneStyle = arrayBars[barOneIdx].style;
-                barOneStyle.height = `${newHeight}px`;
-            }, i * ANIMATION_SPEED_MS);
+                const barTwoStyle = arrayBars[barTwoIdx].style;
+                const color = action === 'compare' ? SECONDARY_COLOR : PRIMARY_COLOR;
+                setTimeout(() => {
+                    barOneStyle.backgroundColor = color;
+                    barTwoStyle.backgroundColor = color;
+                }, i * ANIMATION_SPEED_MS);
+            } else {
+                setTimeout(() => {
+                    const [barOneIdx, barTwoIdx, action] = animations[i];
+                    const barOneStyle = arrayBars[barOneIdx].style;
+                    const barTwoStyle = arrayBars[barTwoIdx].style;
+    
+                    if (action === 'swap') {
+                        // Swap the heights without modifying the actual values
+                        const tempHeight = barOneStyle.height;
+                        barOneStyle.height = barTwoStyle.height;
+                        barTwoStyle.height = tempHeight;
+                    }
+                }, i * ANIMATION_SPEED_MS);
+            }
         }
     }
-}
 
     resetArray() {
       const array = [];

@@ -1,41 +1,46 @@
-export const getQuickSortAnimations = (array) => {
+export function getQuickSortAnimations(array) {
     const animations = [];
     if (array.length <= 1) return array;
-    quickSortHelper(array, 0, array.length - 1, animations);
+    const auxiliaryArray = array.slice();
+    quickSortHelper(auxiliaryArray, 0, array.length - 1, animations);
     return animations;
 }
 
-const quickSortHelper = (array, startIdx, endIdx, animations) => {
-    if (startIdx < endIdx) {
-        let partitionIdx = partition(array, startIdx, endIdx, animations);
-        quickSortHelper(array, startIdx, partitionIdx - 1, animations);
-        quickSortHelper(array, partitionIdx + 1, endIdx, animations);
+export function quickSortHelper(array, low, high, animations) {
+    if (low < high) {
+        const partitionIndex = partition(array, low, high, animations);
+
+        quickSortHelper(array, low, partitionIndex - 1, animations);
+        quickSortHelper(array, partitionIndex + 1, high, animations);
     }
 }
 
-const partition = (array, startIdx, endIdx, animations) => {
-    let pivot = array[endIdx];
-    let partitionIdx = startIdx;
-    for (let i = startIdx; i < endIdx; i++) {
-        animations.push([i, endIdx]);
-        animations.push([i, endIdx]);
-        if (array[i] <= pivot) {
-            animations.push([i, partitionIdx]);
-            animations.push([partitionIdx, i]);
-            swap(array, i, partitionIdx);
-            partitionIdx++;
+function partition(array, low, high, animations) {
+    const pivot = array[high];
+    let i = low - 1;
+
+    for (let j = low; j < high; j++) {
+        animations.push([j, high, 'compare']); // Highlight compared elements
+
+        if (array[j] <= pivot) {
+            i++;
+            animations.push([i, j, 'swap']); // Swap elements
+            animations.push([i, j, 'restore']); // Restore color after swap
+
+            const temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        } else {
+            animations.push([j, high, 'restore']); // Restore color if not swapped
         }
     }
-    animations.push([partitionIdx, endIdx]);
-    animations.push([partitionIdx, endIdx]);
-    animations.push([partitionIdx, endIdx]);
-    animations.push([endIdx, partitionIdx]);
-    swap(array, partitionIdx, endIdx);  
-    return partitionIdx;
-}
 
-const swap = (array, i, j) => {
-    let temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
+    animations.push([i + 1, high, 'swap']); // Swap pivot into its place
+    animations.push([i + 1, high, 'restore']); // Restore color after pivot swap
+
+    const temp = array[i + 1];
+    array[i + 1] = array[high];
+    array[high] = temp;
+
+    return i + 1;
 }
