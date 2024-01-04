@@ -63,3 +63,17 @@ button {
     cursor: pointer;
     outline: none;
 }
+
+.button-section {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.sort-button {
+    width: 80%;
+}
+
+.info-button {
+
+}
