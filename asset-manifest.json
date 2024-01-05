@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/arturfriedrich/sorting-visualizer/static/css/main.a5518e53.css",
+    "main.js": "/arturfriedrich/sorting-visualizer/static/js/main.6ec87ede.js",
+    "index.html": "/arturfriedrich/sorting-visualizer/index.html",
+    "main.a5518e53.css.map": "/arturfriedrich/sorting-visualizer/static/css/main.a5518e53.css.map",
+    "main.6ec87ede.js.map": "/arturfriedrich/sorting-visualizer/static/js/main.6ec87ede.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a5518e53.css",
+    "static/js/main.6ec87ede.js"
+  ]
+}
