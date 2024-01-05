@@ -29,3 +29,7 @@ export function disableAllButtons(val) {
         buttons[i].disabled = val;
     }
 }
+
+export function changeDelay(val) {
+    delay = val;
+}

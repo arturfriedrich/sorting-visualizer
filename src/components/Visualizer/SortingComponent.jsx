@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './SortingComponent.css';
 
-import { PRIMARY_COLOR, randomNumberFrom } from "../../Utilities/utils";
+import {changeDelay, PRIMARY_COLOR, randomNumberFrom} from "../../Utilities/utils";
 
 import { bubbleSort } from '../../algorithms/bubbleSort';
 import { mergeSort } from "../../algorithms/mergeSort";
@@ -76,6 +76,12 @@ function SortingComponent() {
                         Array Size
                         <br />
                         <input id='rangeSlider' type='range' min='5' max='200' value={arrSize} onChange={(e) => setArrSizeHelper(e.target.value)} />
+                    </label>
+
+                    <label className='sliderLabel'>
+                        Delay
+                        <br />
+                        <input id='slider' type='range' min='5' max='200' onChange={(e) => { changeDelay(e.target.value) }} />
                     </label>
 
                     <button onClick={resetArr}>Generate array</button>
