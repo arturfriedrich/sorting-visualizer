@@ -4,6 +4,8 @@ This React App makes understanding basic sorting algorithms easier. The user can
 
 ![img.png](img.png)
 
+Here a [video](https://youtu.be/dGevkjY3s3g) about the working website.
+
 ## Available Scripts
 
 In the project directory, you can run:
