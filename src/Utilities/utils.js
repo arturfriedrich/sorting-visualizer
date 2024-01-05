@@ -24,7 +24,8 @@ export function randomNumberFrom(l, r) {
 
 export function disableAllButtons(val) {
     document.getElementById('rangeSlider').disabled = val;
-    const buttons = document.querySelectorAll(".btn");
+    document.getElementById('slider').disabled = val;
+    const buttons = document.querySelectorAll(".sort-button");
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].disabled = val;
     }
